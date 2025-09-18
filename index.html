@@ -1,30 +1,229 @@
-<!DOCTYPE html>
-<html>
+<!--
+  Professional single-file homepage (index.html)
+
+  How to use / deploy to GitHub Pages:
+  1. Create a new GitHub repository (public) named <your-username>.github.io OR any repo for project pages.
+  2. Add this file as `index.html` at the repository root and push.
+     git init
+     git add index.html
+     git commit -m "Add homepage"
+     git remote add origin git@github.com:YOUR_USERNAME/YOUR_REPO.git
+     git push -u origin main
+  3. For a user/organization site: name the repo `YOUR_USERNAME.github.io` and the site will be live at https://YOUR_USERNAME.github.io
+     For a project site: enable GitHub Pages in repo Settings (branch: main / folder: /root) and visit https://YOUR_USERNAME.github.io/YOUR_REPO
+
+  Want a React/Tailwind version, multi-page site, or a README with CI/CD instructions? Tell me and I will generate it.
+-->
+
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Your Name - Homepage</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Professional Homepage</title>
+  <meta name="description" content="Professional homepage for Your Name — portfolio, projects, publications, contact." />
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent:#6ee7b7; --glass: rgba(255,255,255,0.03);
+      --radius:16px; --maxw:1100px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; background:linear-gradient(180deg,var(--bg),#071123); color:#e6eef6; -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale; line-height:1.5; padding:32px 16px;
+    }
+
+    .container{max-width:var(--maxw); margin:0 auto}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#0ea5a9,#7c3aed);display:flex;align-items:center;justify-content:center;font-weight:800;color:white}
+    nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-weight:600}
+    nav a:hover{color:var(--accent)}
+
+    .hero{display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;margin-bottom:28px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:var(--radius); padding:28px; box-shadow:0 6px 24px rgba(2,6,23,0.6)}
+
+    h1{font-size:clamp(28px,4vw,40px);margin:0 0 8px}
+    p.lead{color:var(--muted);margin:0 0 18px}
+
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .pill{padding:6px 10px;border-radius:999px;background:var(--glass);color:var(--muted);font-weight:600;font-size:13px}
+
+    .projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .project{padding:16px;border-radius:12px;background:linear-gradient(90deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));}
+    .project h3{margin:0 0 8px}
+    .meta{color:var(--muted);font-size:13px}
+
+    footer{margin-top:36px;color:var(--muted);font-size:14px;padding:16px 0;text-align:center}
+
+    .right-card{display:flex;flex-direction:column;gap:12px}
+    .avatar{width:100%;height:260px;background:linear-gradient(180deg,#111827,#0b1220);border-radius:12px;display:flex;align-items:flex-end;justify-content:center;padding:20px}
+    .avatar h2{margin:0;color:var(--accent)}
+
+    .contact{display:flex;flex-direction:column;gap:8px}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,#06b6d4,#7c3aed);color:white;text-decoration:none;font-weight:700}
+
+    .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+
+    /* responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .projects{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+    }
+
+  </style>
 </head>
 <body>
-  <h1>Your Name</h1>
-  <p><b>Position:</b> PhD Student, Computer Science, XYZ University</p>
-  <p><b>Email:</b> your@email.com</p>
-  <p>
-    <a href="https://scholar.google.com/yourid">Google Scholar</a> | 
-    <a href="https://github.com/yourusername">GitHub</a> | 
-    <a href="https://www.linkedin.com/in/yourid/">LinkedIn</a>
-  </p>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">YN</div>
+        <div>
+          <div style="font-weight:800">Your Name</div>
+          <div style="font-size:13px;color:var(--muted)">Researcher • Engineer • Open-source</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
 
-  <h2>Research Interests</h2>
-  <ul>
-    <li>Machine Learning</li>
-    <li>Optimization Algorithms</li>
-    <li>Wireless Sensor Networks</li>
-  </ul>
+    <main>
+      <section class="hero">
+        <div class="card">
+          <h1>Professional homepage — Your Name</h1>
+          <p class="lead">I build robust machine learning systems, publish reproducible research, and open-source practical tools. I focus on applied research and production-ready models.</p>
 
-  <h2>Publications</h2>
-  <p><b>Enhanced L-SHADE for optimizing Q-coverage in directional sensor networks</b>, Submitted to ICLR 2025</p>
+          <div class="skills" aria-hidden>
+            <span class="pill">Python</span>
+            <span class="pill">PyTorch</span>
+            <span class="pill">Optimization</span>
+            <span class="pill">Computer Vision</span>
+            <span class="pill">NLP</span>
+            <span class="pill">Git/GitHub</span>
+          </div>
 
-  <h2>Projects</h2>
-  <p><a href="https://github.com/yourusername/project">My Project</a></p>
+          <hr style="margin:18px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
+
+          <h3 id="about">About</h3>
+          <p class="lead">Brief professional summary. Example: PhD in Computer Science, focusing on optimization for sensor networks. Experienced in building scalable pipelines and publishing code with clear documentation.</p>
+
+          <div style="display:flex;gap:12px;margin-top:14px">
+            <a class="btn" href="#projects">See projects</a>
+            <a class="btn" href="mailto:youremail@example.com">Email me</a>
+          </div>
+
+        </div>
+
+        <aside class="right-card card">
+          <div class="avatar">
+            <div style="text-align:center;width:100%">
+              <h2>Make it yours</h2>
+              <div style="color:var(--muted);font-size:13px">Replace this area with a photo, illustration or GitHub activity graph</div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div class="card" style="padding:12px;background:transparent;box-shadow:none">
+              <div style="font-weight:700">Location</div>
+              <div class="meta">City, Country</div>
+            </div>
+            <div class="card" style="padding:12px;background:transparent;box-shadow:none">
+              <div style="font-weight:700">Availability</div>
+              <div class="meta">Open to collaborations and consulting</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="projects" style="margin-bottom:18px">
+        <h2 style="margin:0 0 12px">Selected Projects</h2>
+        <div class="projects">
+          <article class="project">
+            <h3>Project One</h3>
+            <div class="meta">A short description — key contributions and link to repo.</div>
+          </article>
+          <article class="project">
+            <h3>Project Two</h3>
+            <div class="meta">A short description — reproducible experiments and dataset.</div>
+          </article>
+          <article class="project">
+            <h3>Project Three</h3>
+            <div class="meta">A short description — tools and releases.</div>
+          </article>
+          <article class="project">
+            <h3>Project Four</h3>
+            <div class="meta">A short description — impact and usage.</div>
+          </article>
+        </div>
+      </section>
+
+      <section id="publications" style="margin-bottom:18px">
+        <h2 style="margin:0 0 12px">Publications & Talks</h2>
+        <div class="card">
+          <ul style="margin:0;padding-left:18px">
+            <li><strong>Paper Title (Year)</strong> — Conference / Journal. <a href="#" style="color:var(--accent)">PDF</a> • <a href="#" style="color:var(--accent)">Code</a></li>
+            <li><strong>Paper Title (Year)</strong> — Conference / Journal. <a href="#" style="color:var(--accent)">PDF</a> • <a href="#" style="color:var(--accent)">Code</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2 style="margin:0 0 12px">Contact</h2>
+        <div class="card">
+          <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+            <div>
+              <div style="font-weight:800">Email</div>
+              <div class="meta">youremail@example.com</div>
+            </div>
+            <div>
+              <div style="font-weight:800">GitHub</div>
+              <div class="meta"><a href="https://github.com/YOUR_USERNAME" style="color:var(--accent)">github.com/YOUR_USERNAME</a></div>
+            </div>
+            <div>
+              <div style="font-weight:800">LinkedIn</div>
+              <div class="meta"><a href="#" style="color:var(--accent)">linkedin.com/in/yourprofile</a></div>
+            </div>
+          </div>
+
+          <hr style="margin:16px 0;border:none;border-top:1px solid rgba(255,255,255,0.03)">
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a class="btn" href="mailto:youremail@example.com">Email</a>
+            <a class="btn" href="#projects">View projects</a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      Built with ❤️ — Customize this template and deploy on GitHub Pages.
+    </footer>
+  </div>
+
+  <script>
+    // small enhancement: smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(href.length>1){
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      })
+    })
+  </script>
 </body>
 </html>
